@@ -1,10 +1,11 @@
 body {
+    background: #2E2E2E;
     font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-.logger {
-    /*color: #fff;*/
+.logger, .logger-container {
+    color: #fff;
 }
 /* +/- buttons*/
 @import url(https://fonts.googleapis.com/css?family=Raleway);
@@ -133,11 +134,11 @@ a.btn,.btn {
 
 
 .coin-goal-percentage {
-    /*color: #fff;*/
+    color: #fff;
     padding-right: 20px;
 }
 
 .coin-name {
-    /*color: #fff;*/
+    color: #fff;
 }
 

@@ -9,6 +9,13 @@ $(document).ready(function () {
     ctx.canvas.width = 400;
     ctx.canvas.height = 400;
     var helpers;
+    var coinContentTemplate = ' <div class="wrap" id="#id">\n' +
+        '        <a class="btn btn-small btn-red btn-radius" href="#">-</a>\n' +
+        '        <a class="btn btn-small btn-orange btn-radius coin-goal-percentage" href="#">#coinGoalPercentage</a>\n' +
+        '        <a class="btn btn-small btn-green btn-radius" href="#">+</a>\n' +
+        '        <a class="btn btn-small btn-orange btn-radius btn-status" href="#">Disable</a>\n' +
+        '    </div>';
+    var step = 0.1;
 
     function createPieDataset(labels, values) {
         var data = {};
@@ -27,35 +34,20 @@ $(document).ready(function () {
         return data;
     }
 
-    var createDonut = function (data, ctx) {
-        var myPieChart = new Chart(ctx, {
+    function createDonut(data, ctx) {
+        return new Chart(ctx, {
             type: 'pie',
             data: data,
             options: {
-                layout: {
-                    padding: {
-                        left: 100,
-                        right: 100,
-                        top: 100,
-                        bottom: 100
-                    }
-                },
                 maintainAspectRatio: false
             }
         });
-        return myPieChart;
-    };
+    }
 
     function fillCoinData(data) {
-        var coinContent = ' <div class="wrap" id="#id">\n' +
-            '        <a class="btn btn-small btn-red btn-radius" href="#">-</a>\n' +
-            '        <a class="btn btn-small btn-orange btn-radius coin-goal-percentage" href="#">#coinGoalPercentage</a>\n' +
-            '        <a class="btn btn-small btn-green btn-radius" href="#">+</a>\n' +
-            '        <a class="btn btn-small btn-orange btn-radius btn-status" href="#">Disable</a>\n' +
-            '    </div>';
         data.forEach(function (d) {
-            var eachCoinContent = coinContent.replace('#coinName', d['coin']);
-            var eachCoinContent = eachCoinContent.replace('#id', d['coin']);
+            var eachCoinContent = coinContentTemplate.replace('#coinName', d['coin']);
+            eachCoinContent = eachCoinContent.replace('#id', d['coin']);
             eachCoinContent = eachCoinContent.replace('#coinGoalPercentage', parseFloat(d['goalperc']).toFixed(2));
             coinsInfoBox.append($(eachCoinContent));
             $('.coins').append('<option>' + d['coin'] + '</option>');
@@ -127,7 +119,7 @@ $(document).ready(function () {
     function enableCoin(coin) {
         helpers.logActivity('curl --url "http://127.0.0.1:7779" --data "{\\"userpass\\":\\"$userpass\\",\\"method\\":\\"enable\\",\\"coin\\":\\"' + coin + '\\"}"\n');
         disabledCoins = disabledCoins.filter(function (t) {
-            return t != coin;
+            return t !== coin;
         });
         updateChart();
     }
@@ -140,13 +132,13 @@ $(document).ready(function () {
 
     function helper() {
         function logActivity(activity) {
-            $('.logger').append('<p>' + activity + '</p>');
+            $('.logger').prepend('<p>' + activity + '</p>');
         }
 
         function getChartLabels(data) {
             var labels = [];
             data.forEach(function (d) {
-                if (disabledCoins.indexOf(d['coin']) == -1) {
+                if (disabledCoins.indexOf(d['coin']) === -1) {
                     labels.push(d['coin']);
                 }
             });
@@ -156,8 +148,8 @@ $(document).ready(function () {
         function getChartValues(data) {
             var values = [];
             data.forEach(function (d) {
-                if (disabledCoins.indexOf(d['coin']) == -1) {
-                    if (updatedCoins.indexOf(d['coin']) != -1) {
+                if (disabledCoins.indexOf(d['coin']) === -1) {
+                    if (updatedCoins.indexOf(d['coin']) !== -1) {
                         values.push(parseFloat(d['goalperc']).toFixed(2));
                     }
                     else {
@@ -175,12 +167,12 @@ $(document).ready(function () {
             };
             for (var i = 0; i < size; i++) {
                 var background = randomColor({
-                    luminosity: 'dark',
-                    format: 'rgba',
-                    alpha: 0.2
+                    luminosity: 'bright',
+                    hue: 'random',
+                    alpha: 0.5
                 });
                 results['backgroundColor'].push(background);
-                results['borderColor'].push(background.replace('0.2', 1));
+                results['borderColor'].push(background.replace('0.5', 1));
             }
             return results;
         }
@@ -199,10 +191,10 @@ $(document).ready(function () {
             $('body').on('click', '.btn-status', function (e) {
                 e.preventDefault();
                 var coinId = $(this).parent().attr('id');
-                var goalPercentageElement = $(this).parent().children(':nth-child(4)');
-                var text = goalPercentageElement.text() == 'Disable' ? 'Enable' : 'Disable';
+                var goalPercentageElement = $(this).parent().children('.btn-status');
+                var text = goalPercentageElement.text() === 'Disable' ? 'Enable' : 'Disable';
                 goalPercentageElement.text(text);
-                if (text == 'Disable') {
+                if (text === 'Disable') {
                     enableCoin(coinId);
                 }
                 else {
@@ -215,8 +207,8 @@ $(document).ready(function () {
             $('body').on('click', '.btn-green', function (e) {
                 e.preventDefault();
                 var coinId = $(this).parent().attr('id');
-                var goalPercentageElement = $(this).parent().children(':nth-child(2)');
-                var newVal = parseFloat(goalPercentageElement.text()) + 0.1;
+                var goalPercentageElement = $(this).parent().children('.coin-goal-percentage');
+                var newVal = parseFloat(goalPercentageElement.text()) + step;
                 goalPercentageElement.text(newVal.toFixed(2));
                 updateData(coinId, newVal.toFixed(2));
             });
@@ -226,8 +218,8 @@ $(document).ready(function () {
             $('body').on('click', '.btn-red', function (e) {
                 e.preventDefault();
                 var coinId = $(this).parent().attr('id');
-                var goalPercentageElement = $(this).parent().children(':nth-child(2)');
-                var newVal = parseFloat(goalPercentageElement.text()) - 0.1;
+                var goalPercentageElement = $(this).parent().children('.coin-goal-percentage');
+                var newVal = parseFloat(goalPercentageElement.text()) - step;
                 if (newVal >= 0) {
                     goalPercentageElement.text(newVal.toFixed(2));
                     updateData(coinId, newVal.toFixed(2));
@@ -252,6 +244,4 @@ $(document).ready(function () {
     }
 
     init();
-
-
 });
