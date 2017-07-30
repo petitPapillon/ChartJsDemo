@@ -8,20 +8,17 @@ class CoinApi {
 
     constructor() {
         this.BASE_URL = 'http://127.0.0.1:7779';
-        this.USERPASS = '';
         this.REQUEST_TYPE = {
             GET: 'GET',
             POST: 'POST'
         };
         this.METHOD = {PORTFOLIO: 'portfolio', GET_COINS: 'getcoins', ENABLE_COIN: 'enable', DISABLE_COIN: 'disable', GOAL: 'goal'};
-        this.initApi();
     }
 
     request(type, data) {
 
-        this.USERPASS = this.USERPASS || localStorage['userpass'];
-        if (this.USERPASS) {
-            data.userpass = this.USERPASS;
+        if (localStorage['userpass']) {
+            data.userpass = localStorage['userpass'];
         }
 
         return $.ajax({
@@ -29,12 +26,7 @@ class CoinApi {
             url: this.BASE_URL,
             data: JSON.stringify(data),
             dataType: 'json',
-        }).done((response) => {
-            if (response.userpass && !this.USERPASS) {
-                this.USERPASS = response.userpass;
-                localStorage['userpass'] = this.USERPASS;
-            }
-        });
+        }).done(response => {});
     }
 
     getPortfolio() {

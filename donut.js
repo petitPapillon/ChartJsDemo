@@ -16,12 +16,7 @@ class Chart {
         borderColor: ["rgba(91, 192, 222, 1)", "rgba(76, 174, 76, 1)", "rgba(212, 63, 58, 1)", "rgba(238, 162, 54, 1)"],
         backgroundColor: ["rgba(91, 192, 222, 0.5)", "rgba(76, 174, 76, 0.5)", "rgba(212, 63, 58, 0.5)", "rgba(238, 162, 54, 0.5)"]
     };
-    coinContentTemplate = ' <div class="wrap" id="#id">\n' +
-        '        <a class="btn btn-small btn-red btn-radius" href="#">-</a>\n' +
-        '        <a class="btn btn-small btn-orange btn-radius coin-goal-percentage" href="#">#coinGoalPercentage</a>\n' +
-        '        <a class="btn btn-small btn-green btn-radius" href="#">+</a>\n' +
-        '        <a class="btn btn-small btn-orange btn-radius btn-status" href="#">Disable</a>\n' +
-        '    </div>';
+
     step = 0.1;
 
     createPieDataset(labels, values) {
@@ -177,52 +172,6 @@ class Coin {
 
 class ElementEvents {
 
-    changeCoinStatus() {
-        $('body').on('click', '.btn-status', (e) => {
-            e.preventDefault();
-            let coinId = $(this).parent().attr('id');
-            let goalPercentageElement = $(this).parent().children('.btn-status');
-            let text = goalPercentageElement.text() === 'Disable' ? 'Enable' : 'Disable';
-            goalPercentageElement.text(text);
-            if (text === 'Disable') {
-                enableCoin(coinId);
-            }
-            else {
-                disableCoin(coinId);
-            }
-        });
-    }
 
-    increaseNumber() {
-        $('body').on('click', '.btn-green', (e) => {
-            e.preventDefault();
-            let coinId = $(this).parent().attr('id');
-            let goalPercentageElement = $(this).parent().children('.coin-goal-percentage');
-            let newVal = parseFloat(goalPercentageElement.text()) + step;
-            goalPercentageElement.text(newVal.toFixed(2));
-            updateData(coinId, newVal.toFixed(2));
-        });
-    }
-
-    decreaseNumber() {
-        $('body').on('click', '.btn-red', (e) => {
-            e.preventDefault();
-            let coinId = $(this).parent().attr('id');
-            let goalPercentageElement = $(this).parent().children('.coin-goal-percentage');
-            let newVal = parseFloat(goalPercentageElement.text()) - step;
-            if (newVal >= 0) {
-                goalPercentageElement.text(newVal.toFixed(2));
-                updateData(coinId, newVal.toFixed(2));
-            }
-        });
-    }
-
-    onCoinChanged() {
-        $('.coins').change((d) => {
-            let coinToShow = '#' + $(this).val();
-            $('.wrap').hide();
-            $(coinToShow).show();
-        });
-    }
 
 }
