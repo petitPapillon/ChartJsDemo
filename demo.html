@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo donut</title>
+    <link rel="stylesheet" href="css/bootswatch.css"/>
+    <link rel="stylesheet" href="css/donut.css"/>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
+    <script src="main.bundle.js"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-sm-4">
+        <table class="table table-condensed table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Disable</th>
+                <th>Percentage</th>
+                <th>Increase</th>
+                <th>Decrease</th>
+            </tr>
+            </thead>
+            <tbody id="enabled-coins-container">
+            <tr>
+                <td>KMD</td>
+                <td><a href="#" class="btn btn-primary btn-xs">Disable</a></td>
+                <td>35%</td>
+                <td><a href="#" class="btn btn-success btn-xs">Increase</a></td>
+                <td><a href="#" class="btn btn-primary btn-xs">Decrease</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-2">
+        <table class="table table-hover table-condensed table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Disable</th>
+            </tr>
+            </thead>
+            <tbody id="disabled-coins-container">
+            <tr>
+                <td>REVS</td>
+                <td><a href="#" class="btn btn-success btn-xs">Enable</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+</body>
+</html>

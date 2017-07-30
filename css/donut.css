@@ -1,14 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Yantramanav:100,400);
+
 body {
-    background: #2E2E2E;
-    font-family: sans-serif;
-    -webkit-font-smoothing: antialiased;
+    /*background: #2E2E2E;*/
+    /*font-family: 'Yantramanav', sans-serif;*/
+  /*/  -webkit-font-smoothing: antialiased;*/
+}
+
+.table, .btn-xs {
+    font-size: 9px !important;
 }
 
 .logger, .logger-container {
     color: #fff;
 }
-/* +/- buttons*/
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+
 
 *, *:before, *:after {
     -webkit-box-sizing: border-box;
@@ -22,123 +27,5 @@ body {
     width: 100%;
     max-width: 900px;
     margin-left: 0.5em;
-    font-family: Raleway, Arial, sans-serif;
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 2px solid #eee;
-    margin: 2em 0;
-    padding: 0;
-}
-
-h1, h2 {
-    margin-bottom: 1em;
-    border-bottom: 2px solid #eee;
-    line-height: 1.5;
-}
-
-h1 > small{
-    color: #666;
-}
-
-h1 > small > a,
-p > a{
-    color: #3CB371;
-    text-decoration: none;
-}
-h1 > small > a:hover,
-p > a:hover{
-    text-decoration: underline;
-}
-
-/* Buttons styles */
-input::-moz-focus-inner,
-button::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}
-
-input[type="submit"].btn,
-button.btn {
-    cursor: pointer;
-}
-
-a.btn,.btn {
-    margin-right: 1em; /* remove this while use*/
-    margin-bottom: 1em; /* remove this while use*/
-    display: inline-block;
-    outline: none;
-    *zoom: 1;
-    text-align: center;
-    text-decoration: none;
-    font-family: inherit;
-    font-weight: 300;
-    letter-spacing: 1px;
-    vertical-align: middle;
-    border: 1px solid;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.01);
-}
-/* Radius */
-.btn-radius {
-    border-radius: 0px;
-}
-/* Sizes */
-.btn-small {
-    font-size: 0.8125em;
-    padding: 0.4125em 1.25em;
-}
-.btn-medium {
-    font-size: 0.9375em;
-    padding: 0.5375em 1.375em;
-}
-.btn-large {
-    font-size: 1.0625em;
-    padding: 0.5625em 1.5em;
-}
-
-/* Colors */
-.btn-green {
-    color: #3CB371;
-    border-color: #3CB371;
-}
-.btn-green:hover {
-    background: #3CB371;
-    color: #fff;
-    border-color: #3CB371;
-}
-
-.btn-red {
-    color: #B22222;
-    border-color: #B22222;
-}
-.btn-red:hover {
-    background: #B22222;
-    color: #fff;
-    border-color: #B22222;
-}
-
-.btn-orange{
-    color: darkorange;
-    border-color: darkorange;
-}
-.btn-orange:hover {
-    background: darkorange;
-    color: #fff;
-    border-color: darkorange;
-}
-
-
-.coin-goal-percentage {
-    color: #fff;
-    padding-right: 20px;
-}
-
-.coin-name {
-    color: #fff;
 }
 
