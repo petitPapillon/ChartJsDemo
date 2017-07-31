@@ -8,5 +8,5 @@ let c = new Coin("KMD", 10, 5, "active", ca);
 
 let coins = {};
 
-let ctx = document.getElementById('pieChart').getContext('2d');
+let ctx = document.getElementById('goalChart').getContext('2d');
 

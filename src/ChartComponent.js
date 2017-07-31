@@ -10,12 +10,14 @@ class ChartComponent {
     data;
     ctx;
     donut;
+    valueParameter
 
-    constructor(data, ctx) {
+    constructor(data, ctx, valueParameter) {
         this.ctx = ctx;
         this.dataset = {};
         this.dataset['labels'] = [];
         this.dataset['datasets'] = [];
+        this.valueParameter = valueParameter;
         this.donut = this.createDonut();
         this.update(data);
     }
@@ -33,7 +35,7 @@ class ChartComponent {
     updateChartValues() {
         this.values = [];
         this.data.forEach((d) => {
-            this.values.push(parseFloat(d['goalperc']).toFixed(2));
+            this.values.push(parseFloat(d[this.valueParameter]).toFixed(2));
         });
     }
 

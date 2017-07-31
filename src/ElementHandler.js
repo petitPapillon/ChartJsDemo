@@ -8,10 +8,11 @@ class ElementHandler {
     api;
     coins;
     step;
-    chart;
     coinsArray;
-    realChart;
     goalChart;
+    realChart;
+    goalChartCtx;
+    realChartCtx;
 
     constructor(api) {
         this.$body = $('body');
@@ -29,8 +30,10 @@ class ElementHandler {
             if (response.userpass) {
                 localStorage['userpass'] = response.userpass;
             }
-            this.goalChart = document.getElementById('pieChart').getContext('2d');
-            this.chart = new ChartComponent([], this.goalChart);
+            this.goalChartCtx = document.getElementById('goalChart').getContext('2d');
+            this.realChartCtx = document.getElementById('realChart').getContext('2d');
+            this.goalChart = new ChartComponent([], this.goalChartCtx, 'goal');
+            this.realChart = new ChartComponent([], this.realChartCtx, 'perc');
             this.updateCoins();
             this.changeCoinStatus();
             this.decreaseGoal();
@@ -66,7 +69,8 @@ class ElementHandler {
                 this.coins[coin['coin']] = newCoin;
                 this.coinsArray.push(newCoin);
             });
-            this.chart.update(this.coinsArray);
+            this.goalChart.update(this.coinsArray);
+            this.realChart.update(this.coinsArray);
         });
     }
 
