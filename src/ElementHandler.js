@@ -5,19 +5,20 @@ class ElementHandler {
     $body;
     $activeCoins;
     $inactiveCoins;
+    $inactiveCoinsDropdown;
     api;
     coins;
     step;
     coinsArray;
     goalChart;
-    realChart;
     goalChartCtx;
-    realChartCtx;
-
+    borderColor =  ["rgb(91, 192, 222)", "#FF8247", "#DFFFA5", "#CDAF95", "#FFFF7E",
+        "rgba(46, 65, 114, 0.5)", "rgba(5, 155, 134, 0.5)", "rgba(111, 14, 165, 0.5)"];
     constructor(api) {
         this.$body = $('body');
         this.$activeCoins = $('#active-coins-container');
         this.$inactiveCoins = $('#inactive-coins-container');
+        this.$inactiveCoinsDropdown = $('#inactive-coins-dropdown');
         this.api = api;
         this.step = 0.5;
         this.coins = new Map();
@@ -31,9 +32,7 @@ class ElementHandler {
                 localStorage['userpass'] = response.userpass;
             }
             this.goalChartCtx = document.getElementById('goalChart').getContext('2d');
-            this.realChartCtx = document.getElementById('realChart').getContext('2d');
             this.goalChart = new ChartComponent([], this.goalChartCtx, 'goal');
-            this.realChart = new ChartComponent([], this.realChartCtx, 'perc');
             this.updateCoins();
             this.changeCoinStatus();
             this.decreaseGoal();
@@ -44,7 +43,7 @@ class ElementHandler {
     updateCoins() {
         this.coinsArray = [];
         this.$activeCoins.html("");
-        this.$inactiveCoins.html("");
+        this.$inactiveCoinsDropdown.html("");
         this.updateInactiveCoins();
         this.updateActiveCoins();
     }
@@ -63,31 +62,33 @@ class ElementHandler {
 
     updateActiveCoins() {
         this.api.getPortfolio().then((response) => {
-            response.portfolio.forEach((coin) => {
+            response.portfolio.forEach((coin, index) => {
                 let newCoin = new Coin(coin['coin'], coin['perc'], coin['goal'], coin['goalperc'], 'active', this.api);
-                this.addActiveCoin(newCoin);
+                this.addActiveCoin(newCoin, index);
                 this.coins[coin['coin']] = newCoin;
                 this.coinsArray.push(newCoin);
             });
             this.goalChart.update(this.coinsArray);
-            this.realChart.update(this.coinsArray);
         });
     }
 
     addInactiveCoin(coin) {
-        let coinTemplate = coin.generateInactiveTemplate();
-        this.$inactiveCoins.append($(coinTemplate));
+        let coinTemplateOption = coin.generateInactiveOptionTemplate();
+        this.$inactiveCoinsDropdown.append($(coinTemplateOption));
     }
 
-    addActiveCoin(coin) {
-        let coinTemplate = coin.generateActiveTemplate();
+    addActiveCoin(coin, index) {
+        let coinTemplate = coin.generateActiveTemplate(this.borderColor[index] || '#fff', index);
         this.$activeCoins.append($(coinTemplate));
     }
 
     changeCoinStatus() {
         this.$body.on('click', '.btn-status', (e) => {
             e.preventDefault();
-            const parent = $(e.target).closest('tr');
+            let parent = $(e.target).closest('li');
+            if ($(e.target).closest('li').length == 0) {
+                parent = $(e.target).closest('tr');
+            }
             const coinId = parent.attr('id');
             const coin = this.coins[coinId];
             if (coin.status === 'inactive') {

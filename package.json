@@ -13,5 +13,8 @@
   "scripts": {
     "start": "webpack && node start.js",
     "webpack": "webpack --progress --colors --watch"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7"
   }
 }

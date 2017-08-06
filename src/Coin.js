@@ -41,19 +41,28 @@ class Coin {
         return this.coinApi.disableCoin(this.name);
     }
 
-    generateActiveTemplate() {
-        return `<tr id="${this.name}"><td>${this.name}</td>
-                <td><a href="#" class="btn btn-primary btn-xs btn-status">Disable</a></td>
+    generateActiveTemplate(color, idx) {
+        return `<tr id="${this.name}"><td>
+                <span class="coin-eur coin-title">${this.name}</span></td>
                 <td>
                     <input class="form-control input-sm goal" type="number" value="${this.goal}" />
                 </td>
-                <td><a href="#" class="btn btn-success btn-xs btn-increase">Increase</a></td>
-                <td><a href="#" class="btn btn-primary btn-xs btn-decrease">Decrease</a></td></tr>`;
+                <td><input type="button" class="btn btn-success btn-xs btn-increase btn-overall" value="Increase"/></td>
+                <td><input type="button" href="#" class="btn btn-primary btn-xs btn-decrease btn-overall" value="Decrease"/></td>
+                 <td><input type="button" class="btn-disable btn-overall btn-status" value="Disable"/></td></tr>`;
+
+
     }
 
     generateInactiveTemplate() {
         return `<tr id="${this.name}"><td>${this.name}</td>
                 <td><a href="#" class="btn btn-success btn-xs btn-status">Enable</a></td>`;
+    }
+
+    generateInactiveOptionTemplate() {
+        return `<li id="${this.name}">
+                    ${this.name}<a href="#" c class="btn-enable btn-overall btn-status">Enable</a>
+                </li>`;
     }
 }
 

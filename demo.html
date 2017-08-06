@@ -2,49 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Demo donut</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="css/bootswatch.css"/>
     <link rel="stylesheet" href="css/donut.css"/>
+    <link rel="stylesheet" href="css/data-example.css"/>
     <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            src="//code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
 </head>
 <body>
-<div class="row">
-    <div class="col-sm-2">
-        <table class="table table-hover table-condensed table-striped">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Enable</th>
-            </tr>
-            </thead>
-            <tbody id="inactive-coins-container">
-
-            </tbody>
-        </table>
-    </div>
-    <div class="col-sm-4">
-        <table class="table table-condensed table-striped table-hover">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Disable</th>
-                <th>Percentage</th>
-                <th>Increase</th>
-                <th>Decrease</th>
-            </tr>
-            </thead>
-            <tbody id="active-coins-container">
-            </tbody>
-        </table>
-        <canvas id="realChart" height="400px"></canvas>
-    </div>
-    <div class="col-sm-6">
-        <canvas id="goalChart" height="400px"></canvas>
+<h2 style="text-align: center">Test Coins Probability Center</h2>
+<div class="main-container">
+    <div class="row">
+        <div class="col-sm-5">
+            <canvas id="goalChart" height="400"></canvas>
+        </div>
+        <div class="col-sm-5" style="margin-top: 50px">
+            <table class="coins-table">
+                <thead>
+                <tr>
+                    <th colspan="5">
+                        <div class="btn-group dd-group">
+                            <a href="#" class="btn btn-success btn-sm">Inactive coins</a>
+                            <a href="#" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu" id="inactive-coins-dropdown" role="menu">
+                            </ul>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="active-coins-container">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="main.bundle.js"></script>

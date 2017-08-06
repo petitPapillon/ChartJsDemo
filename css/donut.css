@@ -6,12 +6,15 @@ body {
   /*/  -webkit-font-smoothing: antialiased;*/
 }
 
-.table, .btn-xs, .input-sm {
+.table, .btn-xs, .input-sm .dropdown-menu, .btn-group {
     font-size: 9px !important;
 }
 .input-sm {
     padding: 1px 2px;
     height: 17px;
+    background: transparent;
+    color: #fff;
+    width: 40px;
 }
 
 .logger, .logger-container {
@@ -33,3 +36,16 @@ body {
     margin-left: 0.5em;
 }
 
+.main-container {
+    margin: 10px;
+}
+
+.dropdown-menu {
+    height: auto !important;
+    max-height: 200px !important;
+    overflow-x: hidden !important;
+}
+
+.dd-group {
+    margin: 5px;
+}

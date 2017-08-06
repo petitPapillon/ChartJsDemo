@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootswatch.css"/>
+    <link rel="stylesheet" href="css/data-example.css"/>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="bootstrap.min.js"></script>
+</head>
+<body>
+<table class="coins-table">
+    <thead>
+    <tr>
+        <th colspan="5">
+            <div class="btn-group dd-group">
+                <a href="#" class="btn btn-success btn-sm">Inactive coins</a>
+                <a href="#" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu" id="inactive-coins-dropdown" role="menu">
+                    <li>KMD <a href="#" class="btn-enable btn-overall" value="Enable">Enable</a></li>
+                    <li>OPT <a href="#" class="btn-enable btn-overall" value="Enable">Enable</a></li>
+                </ul>
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><span class="coin-eur coin-title">EUR</span></td>
+        <td>2</td>
+        <td><input type="button" class="btn-increase btn-overall" value="Increase"/></td>
+        <td><input type="button" class="btn-decrease btn-overall" value="Decrease"></td>
+        <td><input type="button" class="btn-disable btn-overall" value="Disable"/></td>
+    </tr>
+    <tr>
+        <td><span class="coin-mvr coin-title">MVR</span</td>
+        <td>3</td>
+        <td><input type="button" class="btn-increase btn-overall" value="Increase"/></td>
+        <td><input type="button" class="btn-decrease btn-overall" value="Decrease"></td>
+        <td><input type="button" class="btn-disable btn-overall" value="Disable"/></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

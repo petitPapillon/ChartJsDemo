@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Yantramanav);
+
+body {
+    background-color: #2b3e50;
+    font-family: Roboto, sans-serif;
+}
+
+.coins-table, .coins-table td, .coins-table th {
+    border: 1px solid #4e5d6c;
+    border-collapse: collapse;
+    padding: 10px 15px;
+    color: white;
+    font-size: 13px;
+}
+
+.coins-table tr td:first-child {
+    padding-left: 40px;
+}
+
+.coins-table th:first-child {
+    text-align: left;
+}
+
+.btn-overall {
+    border: none;
+    padding: 2px 4px;
+    font-size: 10px;
+    border-radius: 2px;
+    font-family: Roboto, sans-serif;
+    background: transparent;
+    outline: none;
+}
+
+.coin-title {
+    position: relative;
+}
+
+.coin-title::before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 1px;
+    left: -18px;
+}
+
+.coin-eur::before {
+    background-color: #1abc9c;
+}
+
+.btn-decrease {
+    border: 1px solid #e48585;
+    color: #e48585;
+}
+.btn-decrease:hover {
+    background-color: #e48585;
+    color: #fff;
+}
+
+.btn-enable {
+    background-color: #43D58C;
+}
+.btn-enable:hover {
+    background-color: #43CD80 !important;
+}
+.btn-increase {
+    border: 1px solid #77bf9a;
+    color: #77bf9a;
+}
+.btn-increase:hover {
+    background-color: #77bf9a;
+    color: #fff;
+}
+
+.btn-disable {
+    background-color: #c9c9c9;
+    color: #696969;
+}
+.btn-disable:hover {
+    color: #c9c9c9;
+    background-color: #999;
+}
+.coins-select {
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 2px;
+    font-family: Roboto, sans-serif;
+    background: transparent;
+    border: 1px solid #dddddd;
+    color: #dddddd;
+}
+.dropdown-menu>li {
+    padding: 3px 10px;
+
+}
+.dropdown-menu>li>a {
+    display: inline-block;
+    float: right;
+    padding: 2px 7px;
+    font-size: 11px;
+}
+.dropdown-menu>li{
+    font-size: 12px;
+    font-weight: normal;
+}
+.dd-group{
+    border-radius: 2px;
+}
+.dd-group>a{
+    background-color: #4e5d6c;
+    border-radius: 2px;
+    padding: 2px 5px;
+}
+.dd-group>a:hover, .dd-group>a:active, .dd-group>a:focus{
+    background-color: #4e5d6c !important;
+}
+

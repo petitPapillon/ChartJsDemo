@@ -3,14 +3,15 @@ class ChartComponent {
     values;
     labels;
     colors = {
-        borderColor: ["rgba(91, 192, 222, 1)", "rgba(76, 174, 76, 1)", "rgba(212, 63, 58, 1)", "rgba(238, 162, 54, 1)"],
-        backgroundColor: ["rgba(91, 192, 222, 0.5)", "rgba(76, 174, 76, 0.5)", "rgba(212, 63, 58, 0.5)", "rgba(238, 162, 54, 0.5)"]
+        borderColor: ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+        backgroundColor: ["rgb(91, 192, 222)", "#FF8247", "#DFFFA5", "#CDAF95", "#FFFF7E",
+            "rgba(46, 65, 114, 0.5)", "rgba(5, 155, 134, 0.5)", "rgba(111, 14, 165, 0.5)"]
     };
     dataset;
     data;
     ctx;
     donut;
-    valueParameter
+    valueParameter;
 
     constructor(data, ctx, valueParameter) {
         this.ctx = ctx;
@@ -48,10 +49,15 @@ class ChartComponent {
 
     createDonut() {
         return new Chart(this.ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: this.dataset,
             options: {
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                legend: false,
+                title: {
+                   display: true,
+                    text: 'Real Chart'
+                }
             }
         });
     }
@@ -61,11 +67,18 @@ class ChartComponent {
         this.dataset['labels'] = this.labels;
         this.dataset['datasets'] = [{
             data: this.values,
-            label: 'Coins percentage',
+            label: 'Goal Percentage',
             backgroundColor: this.colors['backgroundColor'],
             borderColor: this.colors['borderColor'],
-            borderWidth: 1
-        }];
+            borderWidth: 0.5
+        },
+            {
+                data: this.values,
+                label: 'Real percentage',
+                backgroundColor: this.colors['backgroundColor'],
+                borderColor: this.colors['borderColor'],
+                borderWidth: 0.5
+            }];
     }
 }
 
