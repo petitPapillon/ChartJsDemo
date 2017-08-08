@@ -7,7 +7,7 @@ class Coin {
     goal;
     goalperc;
     coinApi;
-
+    colors;
 
     constructor(name, percentage, goal, goalperc, status, coinApi) {
         this.status = status;
@@ -16,6 +16,7 @@ class Coin {
         this.percentage = percentage;
         this.name = name;
         this.coinApi = coinApi;
+        this.colors = ["ED5191", "CEE85D", "59D3A5", "F7BF41", "F26666", "53DAF9", "FF8247", "FFFF7E"];
     }
 
     increase(increment) {
@@ -43,7 +44,7 @@ class Coin {
 
     generateActiveTemplate(color, idx) {
         return `<tr id="${this.name}"><td>
-                <span class="coin-eur coin-title">${this.name}</span></td>
+                <span class="coin-${this.colors[idx]} coin-title">${this.name}</span></td>
                 <td>
                     <input class="form-control input-sm goal" type="number" value="${this.goal}" />
                 </td>

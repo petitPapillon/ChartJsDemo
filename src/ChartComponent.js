@@ -3,10 +3,11 @@ class ChartComponent {
     values;
     labels;
     colors = {
-        borderColor: ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
-        backgroundColor: ["rgb(91, 192, 222)", "#FF8247", "#DFFFA5", "#CDAF95", "#FFFF7E",
-            "rgba(46, 65, 114, 0.5)", "rgba(5, 155, 134, 0.5)", "rgba(111, 14, 165, 0.5)"]
+        borderColor: ["#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c"],
+        backgroundColor: ["#ED5191", "#CEE85D", "#59D3A5", "#F7BF41", "#F26666", "#53DAF9", "#FF8247", "#FFFF7E"]
     };
+
+    //,
     dataset;
     data;
     ctx;
@@ -55,8 +56,12 @@ class ChartComponent {
                 maintainAspectRatio: false,
                 legend: false,
                 title: {
-                   display: true,
-                    text: 'Real Chart'
+                   // display: true,
+                   //  text: 'Goal Data',
+                   //  fontStyle: 'normal',
+                   //  fontFamily: 'Roboto Thin, sans-serif',
+                   //  fontSize: 35,
+                   //  fontColor: "#fff"
                 }
             }
         });
@@ -70,14 +75,14 @@ class ChartComponent {
             label: 'Goal Percentage',
             backgroundColor: this.colors['backgroundColor'],
             borderColor: this.colors['borderColor'],
-            borderWidth: 0.5
+            borderWidth: 0.3
         },
             {
                 data: this.values,
                 label: 'Real percentage',
                 backgroundColor: this.colors['backgroundColor'],
                 borderColor: this.colors['borderColor'],
-                borderWidth: 0.5
+                borderWidth: 0.3
             }];
     }
 }

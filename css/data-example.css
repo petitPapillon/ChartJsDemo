@@ -1,8 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Yantramanav);
-
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
 body {
     background-color: #2b3e50;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.main-container {
+    margin-top: 20px;
 }
 
 .coins-table, .coins-table td, .coins-table th {
@@ -46,9 +51,32 @@ body {
     left: -18px;
 }
 
-.coin-eur::before {
-    background-color: #1abc9c;
+.coin-ED5191::before {
+    background-color: #ED5191;
 }
+.coin-CEE85D::before {
+    background-color: #CEE85D;
+}
+.coin-59D3A5::before {
+    background-color: #59D3A5;
+}
+.coin-F7BF41::before {
+    background-color: #F7BF41;
+}
+.coin-F26666::before {
+    background-color: #F26666;
+}
+.coin-FF8247::before {
+    background-color: #FF8247;
+}
+.coin-FFFF7E::before {
+    background-color: #FFFF7E;
+}
+.coin-53DAF9::before {
+    background-color: #53DAF9;
+}
+
+
 
 .btn-decrease {
     border: 1px solid #e48585;

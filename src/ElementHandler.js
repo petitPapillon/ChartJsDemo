@@ -12,8 +12,8 @@ class ElementHandler {
     coinsArray;
     goalChart;
     goalChartCtx;
-    borderColor =  ["rgb(91, 192, 222)", "#FF8247", "#DFFFA5", "#CDAF95", "#FFFF7E",
-        "rgba(46, 65, 114, 0.5)", "rgba(5, 155, 134, 0.5)", "rgba(111, 14, 165, 0.5)"];
+    borderColor = ["#ED5191", "#CEE85D", "#59D3A5", "#F7BF41", "#F26666", "#53DAF9", "#FF8247", "#FFFF7E"];
+
     constructor(api) {
         this.$body = $('body');
         this.$activeCoins = $('#active-coins-container');
