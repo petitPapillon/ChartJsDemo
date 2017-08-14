@@ -1,13 +1,14 @@
+import Chart from 'chart.js';
+
 class ChartComponent {
 
-    values;
+    goalValues;
+    realValues;
     labels;
     colors = {
         borderColor: ["#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c", "#4e5d6c"],
         backgroundColor: ["#ED5191", "#CEE85D", "#59D3A5", "#F7BF41", "#F26666", "#53DAF9", "#FF8247", "#FFFF7E"]
     };
-
-    //,
     dataset;
     data;
     ctx;
@@ -35,9 +36,11 @@ class ChartComponent {
     }
 
     updateChartValues() {
-        this.values = [];
+        this.goalValues = [];
+        this.realValues = [];
         this.data.forEach((d) => {
-            this.values.push(parseFloat(d[this.valueParameter]).toFixed(2));
+            this.goalValues.push(parseFloat(d[this.valueParameter]).toFixed(2));
+            this.realValues.push(parseFloat(d['perc']).toFixed(2));
         });
     }
 
@@ -54,15 +57,7 @@ class ChartComponent {
             data: this.dataset,
             options: {
                 maintainAspectRatio: false,
-                legend: false,
-                title: {
-                   // display: true,
-                   //  text: 'Goal Data',
-                   //  fontStyle: 'normal',
-                   //  fontFamily: 'Roboto Thin, sans-serif',
-                   //  fontSize: 35,
-                   //  fontColor: "#fff"
-                }
+                legend: false
             }
         });
     }
@@ -71,14 +66,14 @@ class ChartComponent {
         this.dataset = {};
         this.dataset['labels'] = this.labels;
         this.dataset['datasets'] = [{
-            data: this.values,
+            data: this.goalValues,
             label: 'Goal Percentage',
             backgroundColor: this.colors['backgroundColor'],
             borderColor: this.colors['borderColor'],
             borderWidth: 0.3
         },
             {
-                data: this.values,
+                data: this.realValues,
                 label: 'Real percentage',
                 backgroundColor: this.colors['backgroundColor'],
                 borderColor: this.colors['borderColor'],

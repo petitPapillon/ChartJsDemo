@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 class CoinApi {
 
     BASE_URL;
