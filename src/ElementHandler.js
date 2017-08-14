@@ -16,7 +16,6 @@ class ElementHandler {
     borderColor = ["#ED5191", "#CEE85D", "#59D3A5", "#F7BF41", "#F26666", "#53DAF9", "#FF8247", "#FFFF7E"];
 
     constructor(api) {
-        console.log('ff', $);
         this.$body = $('body');
         this.$activeCoins = $('#active-coins-container');
         this.$inactiveCoins = $('#inactive-coins-container');
